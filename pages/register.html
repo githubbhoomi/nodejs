@@ -1,0 +1,47 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+
+    <title>Register - TechFest 2025</title>
+    <link rel="stylesheet" href="/public/style.css">
+  </head>
+  <body>
+    <h1>Register for TechFest 2025</h1>
+    <form onsubmit="return handleSubmit(event)">
+      <input type="text" id="name" placeholder="Your Name" required><br>
+      <input type="email" id="email" placeholder="Your Email" required><br>
+      <button type="submit">Submit</button>
+    </form>
+    <a href="/">Back to Home</a>
+    <script src="/public/script.js"></script>
+  </body>
+</html>   -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Register for Event</title>
+    <link rel="stylesheet" href="/public/style.css" />
+</head>
+
+<body>
+    <header>
+        <h1>Register for Event</h1>
+    </header>
+
+    <form class="register-form" action="/submit" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Email" required />
+        <select name="event" required>
+      <option value="">Select Event</option>
+      <option value="Hackathon">Hackathon</option>
+      <option value="AI Workshop">AI Workshop</option>
+      <option value="Guest Talk">Guest Talk</option>
+    </select>
+        <button type="submit">Register</button>
+    </form>
+</body>
+
+</html>
