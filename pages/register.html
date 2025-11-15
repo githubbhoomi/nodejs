@@ -23,7 +23,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>Register for Event</title>
-    <link rel="stylesheet" href="/public/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
 </head>
 
 <body>
@@ -33,13 +33,17 @@
 
     <form class="register-form" action="/submit" method="POST">
         <input type="text" name="name" placeholder="Your Name" required />
+        <input type="tel" name="phoneno" placeholder="Phone No" pattern="[0-9]{10}" maxlength="10" required />
         <input type="email" name="email" placeholder="Email" required />
+
         <select name="event" required>
-      <option value="">Select Event</option>
-      <option value="Hackathon">Hackathon</option>
-      <option value="AI Workshop">AI Workshop</option>
-      <option value="Guest Talk">Guest Talk</option>
-    </select>
+            <option value="">Select Catering Type</option>
+            <option value="Wedding Catering">Wedding Catering</option>
+            <option value="Birthday Catering">Birthday Catering</option>
+            <option value="Corporate Event Catering">Corporate Event Catering</option>
+            <option value="House Party Catering">House Party Catering</option>
+        </select>
+
         <button type="submit">Register</button>
     </form>
 </body>

@@ -9,5 +9,20 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs"
+  "type": "commonjs",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "express": "^5.1.0",
+    "express-fileupload": "^1.5.2",
+    "express-session": "^1.18.2",
+    "sqlite3": "^5.1.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/githubbhoomi/nodejs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/githubbhoomi/nodejs/issues"
+  },
+  "homepage": "https://github.com/githubbhoomi/nodejs#readme"
 }

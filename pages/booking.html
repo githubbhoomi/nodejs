@@ -1,59 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Now - Royal Events & Catering</title>
-  <link rel="stylesheet" href="/public/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Now - Royal Events & Catering</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
 </head>
+
 <body>
-<header>
-  <div class="logo">🎉 Royal Events & Catering</div>
-  <nav>
-    <a href="/">Home</a>
-    <a href="/events">Events</a>
-    <a href="/menu">Menu</a>
-    <a href="/booking" class="active">Book Now</a>
-    <a href="/contact">Contact</a>
-  </nav>
-</header>
+    <header>
+        <div class="logo">🎉 Royal Events & Catering</div>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/events">Events</a>
+            <a href="/menu">Menu</a>
+            <a href="/booking" class="active">Book Now</a>
+            <a href="/contact">Contact</a>
+        </nav>
+    </header>
 
-<section class="page-hero">
-  <h1>Book Your Event</h1>
-  <p>We’ll make your occasion stress-free and special.</p>
-</section>
+    <section class="page-hero">
+        <h1>Book Your Event</h1>
+        <p>We’ll make your occasion stress-free and special.</p>
+    </section>
 
-<section class="form-section">
-  <form>
-    <label>Name:</label>
-    <input type="text" placeholder="Your Name" required>
+    <section class="form-section">
+        <form>
+            <label>Name:</label>
+            <input type="text" placeholder="Your Name" required>
 
-    <label>Email:</label>
-    <input type="email" placeholder="Your Email" required>
+            <label>Email:</label>
+            <input type="email" placeholder="Your Email" required>
 
-    <label>Phone:</label>
-    <input type="tel" placeholder="Your Phone" required>
+            <label>Phone:</label>
+            <input type="tel" placeholder="Your Phone" required>
 
-    <label>Event Type:</label>
-    <select>
+            <label>Event Type:</label>
+            <select>
       <option>Birthday Party</option>
       <option>Baby Shower</option>
       <option>Bachelor Party</option>
       <option>Anniversary</option>
     </select>
 
-    <label>Date:</label>
-    <input type="date" required>
+            <label>Date:</label>
+            <!-- <input type="date" placeholder="DD-MM-YYYY" pattern="\d{2}-\d{2}-\d{4}"  required> -->
+            <input type="text" id="eventDate" required>
 
-    <label>Message:</label>
-    <textarea placeholder="Tell us more about your event"></textarea>
+            <label>Message:</label>
+            <textarea placeholder="Tell us more about your event"></textarea>
 
-    <button type="submit" class="btn primary">Submit Request</button>
-  </form>
-</section>
+            <button type="submit" class="btn primary">Submit Request</button>
+        </form>
+    </section>
 
-<footer>
-  <p>© 2025 Royal Events & Catering | Designed by Bhoomika 💫</p>
-</footer>
+    <footer>
+        <p>© 2025 Royal Events & Catering | Designed by Bhoomika 💫</p>
+    </footer>
+    <script>
+        $(function() {
+            $("#eventDate").datepicker({
+                dateFormat: "dd-mm-yy"
+            });
+        });
+    </script>
+
 </body>
+
 </html>

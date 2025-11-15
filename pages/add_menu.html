@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Menu Item</title>
+    <title>Add Menu Item</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 450px;
+            max-height: 530px;
+            margin: 39px 35px 36px 356px;
+            background-color: #fff;
+            padding: 21px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 0px;
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Optional: style file input */
+        input[type="file"] {
+            padding: 3px;
+        }
+
+        /* Responsive */
+        @media(max-width: 600px) {
+            .container {
+                margin: 20px;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add New Menu Item</h2>
+    <form action="/add-menu" method="POST" enctype="multipart/form-data">
+        <label>Name:</label><br>
+        <input type="text" name="name" required><br>
+
+        <label>Type:</label><br>
+        <select name="type" required>
+            <option value="Meal">Meal</option>
+            <option value="Chats">Chats</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Starters">Starters</option>
+        </select><br>
+
+        <label>Price:</label><br>
+        <input type="number" name="price" step="0.01" required><br>
+
+        <label>Description:</label><br>
+        <textarea name="description" rows="2" cols="30"></textarea><br>
+
+        <label>Photo:</label><br>
+        <input type="file" name="photo" accept="image/*" required><br>
+
+        <button type="submit">Add Menu Item</button>
+    </form>
+</div>
+</body>
+</html>
