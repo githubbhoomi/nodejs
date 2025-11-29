@@ -30,33 +30,34 @@
     </section>
 
     <section class="form-section">
-        <form>
+        <form action="/booking" method="POST">
+
             <label>Name:</label>
-            <input type="text" placeholder="Your Name" required>
-
+            <input type="text" name="name" required>
+        
             <label>Email:</label>
-            <input type="email" placeholder="Your Email" required>
-
+            <input type="email" name="email" required>
+        
             <label>Phone:</label>
-            <input type="tel" placeholder="Your Phone" required>
-
+            <input type="tel" name="phone" required>
+        
             <label>Event Type:</label>
-            <select>
-      <option>Birthday Party</option>
-      <option>Baby Shower</option>
-      <option>Bachelor Party</option>
-      <option>Anniversary</option>
-    </select>
-
+            <select name="eventType">
+                <option>Birthday Party</option>
+                <option>Baby Shower</option>
+                <option>Bachelor Party</option>
+                <option>Anniversary</option>
+            </select>
+        
             <label>Date:</label>
-            <!-- <input type="date" placeholder="DD-MM-YYYY" pattern="\d{2}-\d{2}-\d{4}"  required> -->
-            <input type="text" id="eventDate" required>
-
+            <input type="text" id="eventDate" name="eventDate" required>
+        
             <label>Message:</label>
-            <textarea placeholder="Tell us more about your event"></textarea>
-
+            <textarea name="message"></textarea>
+        
             <button type="submit" class="btn primary">Submit Request</button>
         </form>
+        
     </section>
 
     <footer>

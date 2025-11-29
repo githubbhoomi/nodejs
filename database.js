@@ -82,5 +82,38 @@ CREATE TABLE IF NOT EXISTS menu_items (
 //     if (err) return console.error(err.message);
 //     console.log("✅ users_new renamed to users");
 // });
+// db.run(`CREATE TABLE IF NOT EXISTS orders (
+//     id INTEGER PRIMARY KEY AUTOINCREMENT,
+//     user_id INTEGER,           -- null if guest
+//     session_id TEXT,           -- used if no login
+//     item TEXT,
+//     price INTEGER,
+//     quantity INTEGER DEFAULT 1,
+//     address TEXT,
+//     order_time TEXT
+// )`, (err) => {
+//     if (err) return console.error(err.message);
+//     console.log("✅ orders table created");
+// })
+
+// db.run(`CREATE TABLE event_bookings (
+//     id INT AUTO_INCREMENT PRIMARY KEY,
+//     name VARCHAR(100) NOT NULL,
+//     email VARCHAR(150) NOT NULL,
+//     phone VARCHAR(20) NOT NULL,
+//     event_type VARCHAR(50) NOT NULL,
+//     event_date DATE NOT NULL,
+//     message TEXT,
+//     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+// )`, (err) => {
+//     if (err) return console.error(err.message);
+//     console.log("✅ payments table created");
+// })
+
+// db.run(`ALTER TABLE users ADD COLUMN email TEXT;`)
+db.run(`Delete  From event_bookings`, (err) => {
+    if (err) return console.error(err.message);
+    console.log("✅ Deleted Successfully");
+})
 
 module.exports = db;

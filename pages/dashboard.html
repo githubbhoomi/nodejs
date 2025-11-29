@@ -99,7 +99,7 @@
             .then(res => res.json())
             .then(data => {
                 document.getElementById("user").textContent = data.username;
-    
+                console.log(data.role)
                 // Show only admin features if user is admin
                 if (data.role !== "admin") {
                     // Hide Admin-only buttons
