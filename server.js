@@ -94,9 +94,18 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "pages", "index.html"));
 });
 
-app.get("/events", (req, res) => {
-    res.sendFile(path.join(__dirname, "pages", "events.html"));
-});
+
+// app.get("/", (req, res) => {
+//     fs.readFile("index.html", "utf8", (err, data) => {
+//         if (err) return res.status(500).send("Error loading file");
+//         res.send(data);
+//     });
+// });
+
+
+// app.get("/events", (req, res) => {
+//     res.sendFile(path.join(__dirname, "pages", "events.html"));
+// });
 
 // app.get("/menu", (req, res) => {
 //     res.sendFile(path.join(__dirname, "pages", "menu.html"));
@@ -1270,6 +1279,135 @@ app.get("/my-orders", (req, res) => {
                         <div class="total">Total: ₹${total}</div>
                         <p><b>Address:</b> ${order.address}</p>
                         <small>Ordered on: ${order.order_time}</small>
+                    </div>
+                </div>`;
+            });
+
+            html += `</div></body></html>`;
+            res.send(html);
+        }
+    );
+});
+
+
+
+
+
+
+app.get("/events", (req, res) => {
+    const session_id = req.sessionID;
+
+    db.all(
+        "SELECT * FROM event_bookings  ORDER BY id DESC",
+        (err, rows) => {
+            if (err) return res.send(`Error loading orders : ${err.message}`);
+
+            let html = `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <title>My Orders - Royal Events & Catering</title>
+                <style>
+                    body { margin:0; font-family: Arial; background:#f3f4f6; }
+
+                    header {
+                        background:#2c3e50;
+                        padding:15px;
+                        color:white;
+                        display:flex;
+                        justify-content:space-between;
+                        align-items:center;
+                    }
+
+                    header a {
+                        color:white;
+                        margin-left:15px;
+                        text-decoration:none;
+                        font-weight:bold;
+                    }
+
+                    .orders-container {
+                        max-width:900px;
+                        margin:30px auto;
+                        padding:20px;
+                    }
+
+                    h2 {
+                        margin-bottom:20px;
+                    }
+
+                    .order-card {
+                        background:white;
+                        padding:15px;
+                        border-radius:12px;
+                        margin-bottom:20px;
+                        display:flex;
+                        gap:15px;
+                        box-shadow:0 3px 12px rgba(0,0,0,0.1);
+                        align-items:center;
+                    }
+
+                    .order-img {
+                        width:120px;
+                        height:120px;
+                        object-fit:cover;
+                        border-radius:10px;
+                        border:1px solid #ddd;
+                    }
+
+                    .order-details {
+                        flex:1;
+                    }
+
+                    .total {
+                        background:#2ecc71;
+                        color:white;
+                        padding:6px 12px;
+                        font-size:14px;
+                        border-radius:6px;
+                        display:inline-block;
+                        margin-top:5px;
+                    }
+
+                    small {
+                        color:#666;
+                    }
+                </style>
+            </head>
+
+            <body>
+            <header>
+                <div class="logo">🎉 Royal Events & Catering</div>
+                <nav>
+                    <a href="/">Home</a>
+                    <a href="/events">Events</a>
+                    <a href="/addevents">Events Register</a>
+                    <a href="/menu">Menu</a>
+                </nav>
+            </header>
+
+            <div class="orders-container">
+                <h2>My Orders</h2>
+            `;
+            console.log(rows.length)
+            if (rows.length === 0) {
+                html += `<h3>No orders yet</h3></div></body></html>`;
+                return res.send(html);
+            }
+
+            rows.forEach(events => {
+                // const total = events.price * order.quantity;
+
+                html += `
+                <div class="order-card">
+                    <img src="/images/${events.name}.jpg" class="order-img" onerror="this.src='/default-food.jpg'">
+
+                    <div class="order-details">
+                        <h3>${events.name}</h3>
+                        <p>₹${events.event_type} </p>
+                        <div class="total">Total: ₹${events.date}</div>
+                
                     </div>
                 </div>`;
             });

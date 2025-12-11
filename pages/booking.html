@@ -34,13 +34,13 @@
 
             <label>Name:</label>
             <input type="text" name="name" required>
-        
+
             <label>Email:</label>
             <input type="email" name="email" required>
-        
+
             <label>Phone:</label>
             <input type="tel" name="phone" required>
-        
+
             <label>Event Type:</label>
             <select name="eventType">
                 <option>Birthday Party</option>
@@ -48,28 +48,64 @@
                 <option>Bachelor Party</option>
                 <option>Anniversary</option>
             </select>
-        
+
+            <!-- <label>Date:</label>
+            <input type="text" id="eventDate" name="eventDate" required> -->
             <label>Date:</label>
-            <input type="text" id="eventDate" name="eventDate" required>
-        
+            <input type="date" id="eventDate" name="eventDate" required>
+            <span id="dateError" style="color:red;"></span>
+            <p id="displayDate"></p>
+
+
             <label>Message:</label>
             <textarea name="message"></textarea>
-        
+
             <button type="submit" class="btn primary">Submit Request</button>
         </form>
-        
+
     </section>
 
     <footer>
         <p>© 2025 Royal Events & Catering | Designed by Bhoomika 💫</p>
     </footer>
     <script>
-        $(function() {
-            $("#eventDate").datepicker({
-                dateFormat: "dd-mm-yy"
-            });
+        // $(function() {
+        //     $("#eventDate").datepicker({
+        //         dateFormat: "dd-mm-yy"
+        //     });
+        // });
+
+
+        const eventDateInput = document.getElementById("eventDate");
+        const dateError = document.getElementById("dateError");
+        const displayDate = document.getElementById("displayDate");
+
+        // Set minimum date = today
+        const today = new Date().toISOString().split("T")[0];
+        eventDateInput.min = today;
+
+        eventDateInput.addEventListener("change", async() => {
+            const selectedDate = eventDateInput.value; // value = YYYY-MM-DD
+            if (!selectedDate) return;
+
+            // Check locked date from backend
+            const res = await fetch(`/api/check-date?date=${selectedDate}`);
+            const data = await res.json();
+
+            if (!data.allowed) {
+                dateError.textContent = "This date is locked. Please choose another date.";
+                eventDateInput.value = "";
+                displayDate.textContent = "";
+                return;
+            }
+
+            // If allowed → show formatted date
+            dateError.textContent = "";
+            const [yy, mm, dd] = selectedDate.split("-");
+            displayDate.textContent = `Selected Date: ${dd}/${mm}/${yy}`;
         });
     </script>
+
 
 </body>
 

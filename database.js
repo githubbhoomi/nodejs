@@ -111,9 +111,15 @@ CREATE TABLE IF NOT EXISTS menu_items (
 // })
 
 // db.run(`ALTER TABLE users ADD COLUMN email TEXT;`)
-db.run(`Delete  From event_bookings`, (err) => {
-    if (err) return console.error(err.message);
-    console.log("✅ Deleted Successfully");
-})
+// db.run(`Delete  From event_bookings`, (err) => {
+//     if (err) return console.error(err.message);
+//     console.log("✅ Deleted Successfully");
+// })
+
+
+// db.run(`Delete  From event_bookings`, (err) => {
+//     if (err) return console.error(err.message);
+//     console.log("✅ Deleted Successfully");
+// })
 
 module.exports = db;
